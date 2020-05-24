@@ -323,7 +323,6 @@ describe('POST /api/artists', function() {
       dateOfBirth: 'February 1, 1980',
       biography: 'My Biography'
     };
-
     seed.seedArtistDatabase(done);
   });
 
