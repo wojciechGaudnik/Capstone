@@ -1,0 +1,7 @@
+node_modules/
+.idea/.gitignore
+.idea/capstone-project-1-x-press-publishing.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/sonarlint/
+.idea/vcs.xml
