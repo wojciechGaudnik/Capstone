@@ -88,11 +88,42 @@ artistsRouter.put('/:artistId', (req, res, next) => {
         if (err) {
             next(err);
         } else {
-            db.get(`select * from main.Artist where Artist.id = ${req.params.artistId}`, (err, artist) => {
+            db.get(`select * from Artist where Artist.id = ${req.params.artistId}`, (err, artist) => {
                 res.status(200).json({artist: artist});
             });
         }
     })
 })
+
+artistsRouter.delete('/:artistId', (req, res, next) => {
+    const sql = `
+        update Artist
+        set is_currently_employed = 0
+        where id = $artistId;
+        `;
+    const values = {$artistId: req.params.artistId};
+    db.run(sql, values, (err) => {
+        if (err) {
+            next(err);
+        } else {
+            db.get(`select *
+                    from Artist
+                    where id = ${req.params.artistId}`, (err, artist) => {
+                res.status(200).json({artist: artist});
+            });
+        }
+    })
+
+
+    // db.run('delete from Artist where Artist.id = ${req.params.artistId}', (err) => {
+    //     if (err) {
+    //         next(err);
+    //     } else {
+    //         res.status(200).send();
+    //     }
+    // })
+});
+
+
 
 module.exports = artistsRouter;
