@@ -113,17 +113,6 @@ artistsRouter.delete('/:artistId', (req, res, next) => {
             });
         }
     })
-
-
-    // db.run('delete from Artist where Artist.id = ${req.params.artistId}', (err) => {
-    //     if (err) {
-    //         next(err);
-    //     } else {
-    //         res.status(200).send();
-    //     }
-    // })
 });
-
-
 
 module.exports = artistsRouter;
