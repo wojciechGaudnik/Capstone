@@ -35,6 +35,32 @@ seriesRouter.get('/:seriesId', (req, res, next) => {
     res.status(200).json({series: req.series});
 });
 
+seriesRouter.post('/', (req, res, next) => {
+    const name = req.body.series.name;
+    const description = req.body.series.description;
+    if (!name || !description) {
+        return res.sendStatus(400);
+    }
+
+    const sql = `insert into Series (name, description)
+                 values ($name, $description);
+                 `
+    const values = {
+        $name: name,
+        $description: description
+    }
+
+    db.run(sql, values, function (err) {
+        if (err) {
+            next(err);
+        } else {
+            db.get(`select * from Series where id = ${this.lastID}`, (err, series) => {
+                res.status(201).json({series: series});
+            });
+        }
+    });
+})
+
 
 
 
