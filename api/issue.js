@@ -114,12 +114,22 @@ issueRouter.put('/:issueId', ((req, res, next) => {
     })
 }));
 
-// seriesRouter.delete('/:seriesId', (req, res, next) => {
-//     const sql = `DELETE
-//                  FROM Series
-//                  WHERE id = $seriesId`;
-//     const values = {$seriesId: req.params.seriesId};
-//     // db.run(sql, values, (err) => {
-// });
+issueRouter.delete('/:issueId', (req, res, next) => {
+    const
+        sql = `delete
+               from Issue
+               where id = $issueId`,
+        values = {$issueId: req.params.issueId};
+    console.log(sql);
+    console.log(values);
+    db.run(sql, values, (err) => {
+            if (err) {
+                next(err);
+            } else {
+                res.sendStatus(204);
+            }
+        }
+    );
+});
 
 module.exports = issueRouter;
