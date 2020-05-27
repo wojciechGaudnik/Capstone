@@ -21,4 +21,17 @@ db.serialize(function () {
                 description text    not null
             );
     `);
+    db.run(`drop table if exists Issue;`);
+    db.run(`create table Issue
+            (
+                id               integer not null primary key,
+                name             text    not null,
+                issue_number     integer not null,
+                publication_date text    not null,
+                artist_id        integer not null,
+                series_id        integer not null,
+                foreign key (artist_id) references Artist(id),
+                foreign key (series_id) references Series(id)
+            );
+    `);
 })
