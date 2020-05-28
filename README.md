@@ -8,7 +8,7 @@
 
 ### Project_Overview
 
-Learning project from CodeCademy. My goal was to implement backend (node.js with SQLite 3). I had tasks and tests, and I had to implement all endpoints and check tests.  
+Learning project from CodeCademy. This is a project that I've only been doing from node.js. I made it out of curiosity how to build API in this technology. My goal was to implement backend (node.js with SQLite 3). I had tasks and tests, and I had to implement all endpoints and check tests.  
 
 ### Tech_Stack
 * node.js
