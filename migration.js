@@ -28,10 +28,8 @@ db.serialize(function () {
                 name             text    not null,
                 issue_number     integer not null,
                 publication_date text    not null,
-                artist_id        integer not null,
-                series_id        integer not null,
-                foreign key (artist_id) references Artist(id),
-                foreign key (series_id) references Series(id)
+                artist_id        integer not null references Artist(id),
+                series_id        integer not null references Series(id)
             );
     `);
 })
