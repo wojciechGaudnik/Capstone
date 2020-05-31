@@ -21,7 +21,6 @@ issueRouter.param('issueId', (req, res, next, issueId) => {
 });
 
 issueRouter.get('/', ((req, res, next) => {
-    console.log("ok");
     db.all(`select *
             from Issue where series_id = ${req.params.seriesId}`, (err, issues) => {
         if (err) {
@@ -120,8 +119,6 @@ issueRouter.delete('/:issueId', (req, res, next) => {
                from Issue
                where id = $issueId`,
         values = {$issueId: req.params.issueId};
-    console.log(sql);
-    console.log(values);
     db.run(sql, values, (err) => {
             if (err) {
                 next(err);
